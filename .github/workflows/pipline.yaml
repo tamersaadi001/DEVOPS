@@ -1,0 +1,21 @@
+name: CI CD PIPLINES
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v5 
+
+    - name: node install 
+      uses: actions/setup-node@v3
+      with:
+        node-version : 18
+
+    - name: install dependes 
+      run: npm install
+
+    - name: test
+      uses: npm test
